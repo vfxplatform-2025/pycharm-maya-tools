@@ -10,6 +10,7 @@ PyCharm에서 Maya 개발을 위한 External Tools 패키지 (MayaCharm 플러�
 - ✅ **두 가지 실행 모드**
   - Maya GUI 연동 (Socket 통신)
   - mayapy standalone 실행
+- ✅ **자동완성 지원** - Maya API stub 파일 포함
 - ✅ **쉬운 설치** - 홈 디렉토리에 한 번만 설치
 - ✅ **커스터마이징 가능** - Python 스크립트로 자유롭게 수정 가능
 
@@ -27,6 +28,7 @@ bash install.sh
 - `~/.pycharm_tools/run_with_mayapy.sh`
 - `~/.pycharm_tools/test_maya_connection.py`
 - `~/.pycharm_tools/test_mayapy_standalone.py`
+- `~/.pycharm_tools/stubs/` - Maya API 자동완성 파일
 
 ### 2. PyCharm 설정
 
@@ -171,7 +173,13 @@ $UserHome$/.pycharm_tools/run_in_maya.py (X)
 ├── test_maya_connection.py     # Maya GUI 연결 테스트
 ├── test_mayapy_standalone.py   # mayapy standalone 테스트
 ├── README.md                   # 이 파일
-└── PYCHARM_SETUP.md           # PyCharm 설정 상세 가이드
+├── PYCHARM_SETUP.md           # PyCharm 설정 상세 가이드
+├── AUTOCOMPLETE_SETUP.md      # 자동완성 설정 가이드
+└── stubs/                      # Maya API 자동완성 stub 파일
+    └── maya/
+        ├── cmds/
+        ├── api/
+        └── ...
 ```
 
 ## 기술 사양
@@ -188,11 +196,24 @@ $UserHome$/.pycharm_tools/run_in_maya.py (X)
 |------|-----------|-------------------|
 | Maya로 코드 전송 | ✓ | ✓ |
 | mayapy 실행 | ✓ | ✓ |
+| 자동완성 | ✓ | ✓ (stub 파일) |
 | 디버거 연결 | ✓ | ✗ |
 | 최신 PyCharm 호환 | ✗ (2024.3 오류) | ✓ |
 | 포트 충돌 해결 | ✗ | ✓ (7002) |
 | 커스터마이징 | ✗ | ✓ (Python 스크립트) |
 | 설치 | 플러그인 설치 | 스크립트 복사 |
+
+## Maya 자동완성 설정 (선택)
+
+PyCharm에서 Maya API 자동완성을 활성화하려면:
+
+**Settings > Project > Python Interpreter > Show All > Show paths for the selected interpreter > Add (+)**
+
+```
+/home/m83/.pycharm_tools/stubs
+```
+
+자세한 설정 방법은 `AUTOCOMPLETE_SETUP.md`를 참고하세요.
 
 ## 라이선스
 
